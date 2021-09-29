@@ -1,0 +1,135 @@
+body * {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* d3Tree */
+
+.node {
+  cursor: pointer;
+}
+
+.overlay {
+  background-color: #eee;
+}
+
+.node circle {
+  fill: #fff;
+  stroke: rgb(251, 252, 170);
+  stroke-width: 1.5px;
+}
+
+.node-text {
+  font-size: 10px;
+  font-family: sans-serif;
+  color: rgb(33, 37, 36);
+}
+
+.link {
+  fill: none;
+  stroke: #ccc;
+  stroke-width: 1.5px;
+}
+
+.templink {
+  fill: none;
+  stroke: rgb(89, 131, 252);
+  stroke-width: 3px;
+}
+
+.ghostCircle.show {
+  display: block;
+}
+
+.ghostCircle,
+.activeDrag .ghostCircle {
+  display: none;
+}
+
+.hidden {
+  display: none;
+}
+
+button,
+.button {
+  border-radius: 8px;
+  margin: 5px;
+  padding: 8px 24px 10px 24px;
+  box-shadow: 0px 3px 1px -2px rgb(0 0 0 / 10%),
+    0px 2px 2px 0px rgb(0 0 0 / 14%), 0px 1px 5px 0px rgb(0 0 0 / 12);
+}
+
+button#submit {
+  background-color: rgb(89, 131, 252) !important;
+  transition: background-color 300ms ease-out;
+}
+button#submit:hover {
+  background-color: rgb(63, 97, 199) !important;
+  -webkit-box-shadow: 3px 4px 24px -11px rgba(66, 68, 90, 1);
+  -moz-box-shadow: 3px 4px 24px -11px rgba(66, 68, 90, 1);
+  box-shadow: 3px 4px 24px -11px rgba(66, 68, 90, 1);
+}
+button#submit:hover,
+button#submit:focus {
+  color: #ffffff !important;
+}
+
+/* Modal */
+.reveal-modal {
+  border-radius: 12px;
+}
+
+.button.success {
+  background-color: rgb(89, 131, 252) !important;
+  transition: background-color 300ms ease-out;
+}
+.button.success:hover {
+  background-color: rgb(63, 97, 199) !important;
+  -webkit-box-shadow: 3px 4px 24px -11px rgba(66, 68, 90, 1);
+  -moz-box-shadow: 3px 4px 24px -11px rgba(66, 68, 90, 1);
+  box-shadow: 3px 4px 24px -11px rgba(66, 68, 90, 1);
+}
+
+.button.info {
+  box-sizing: border-box !important;
+  background-color: rgb(248, 248, 248) !important;
+  padding: 6px 24px 8px 24px;
+  transition: background-color 300ms ease-out;
+  color: rgb(89, 131, 252);
+  border: 2px solid rgb(89, 131, 252);
+  box-shadow: 3px 4px 24px -11px rgb(211, 213, 236);
+}
+.button.info:hover {
+  color: rgb(89, 131, 252);
+  background-color: rgb(222, 229, 252) !important;
+}
+
+input[type="text"],
+input[type="password"],
+input[type="date"],
+input[type="datetime"],
+input[type="datetime-local"],
+input[type="month"],
+input[type="week"],
+input[type="email"],
+input[type="number"],
+input[type="search"],
+input[type="tel"],
+input[type="time"],
+input[type="url"],
+input[type="color"],
+textarea {
+  border-radius: 4px;
+}
+
+/* Context-menu */
+.d3-context-menu {
+  border-radius: 12px !important;
+  box-shadow: 0px 2px 1px -1px rgb(180 180 180 / 5%),
+    0px 2px 2px 0px rgb(120 120 120 / 5%), 0px 1px 5px 0px rgb(120 120 120 / 5);
+}
+
+.d3-context-menu ul li:hover,
+.d3-context-menu ul li:focus {
+  background-color: rgb(207, 219, 253) !important;
+  color: black !important;
+}

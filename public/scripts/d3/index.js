@@ -1,16 +1,11 @@
-import db from "../config/firebase.config";
-import React, { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+document.addEventListener("DOMContentLoaded", function() {
 
-export default function GraphDetails() {
-  const [graphData, setGraphs] = useState([]);
+    document.getElementById("EditNodeModal").innerHTML = editNodeModalContent
+    document.getElementById("CreateNodeModal").innerHTML = CreateNodeModalContent
 
-  let { graphId } = useParams();
+    
 
-  useEffect(() => {
-    fetchGraphs();
-    createModals();
-  }, []);
+  });
 
   const editNodeModalContent = `
   <h2 id="modalTitle">Edit Node</h2>
@@ -82,22 +77,3 @@ export default function GraphDetails() {
     </form>
     <a class="close-reveal-modal" aria-label="Close">&#215;</a>
     `
-
-  function createModals() {
-    document.addEventListener("DOMContentLoaded", function() {
-      document.getElementById("EditNodeModal").innerHTML = editNodeModalContent
-      document.getElementById("CreateNodeModal").innerHTML = CreateNodeModalContent
-    });
-  }
-
-  const fetchGraphs = async () => {
-    const response = db.collection("professions").doc(graphId);
-    const data = await response.get();
-    console.log(data.data());
-    setGraphs(...graphData, data.data());
-    window.draw_tree(null, data.data())
-  };
-
-  return <div id="tree-container"/>
-        
-}

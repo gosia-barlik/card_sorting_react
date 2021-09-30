@@ -2,6 +2,13 @@ import db from "../config/firebase.config";
 import React, { useState, useEffect } from "react";
 import { NavLink } from "react-router-dom";
 
+import Box from '@mui/material/Box';
+import Card from '@mui/material/Card';
+import CardActions from '@mui/material/CardActions';
+import CardContent from '@mui/material/CardContent';
+import Button from '@mui/material/Button';
+import Typography from '@mui/material/Typography';
+
 export default function GraphList() {
   const [graphs, setGraphs] = useState([]);
 
@@ -22,15 +29,19 @@ export default function GraphList() {
   };
 
   return (
-    <ul>
+    <div style={{marginLeft: '120px'}}>
       {graphs &&
         graphs.map((graph) => {
           return (
-            <NavLink to={`/Graph/${graph.id}`}>
-              <li key={graph.id}>{graph.id}</li>
-            </NavLink>
+            <Card sx={{ minWidth: 275 }} style={{margin: '20px'}}>
+               <CardContent>
+                 <NavLink to={`/Graph/${graph.id}`} style={{fontSize: '12px', color:'rgb(42, 41, 41)'}}>
+                  <li key={graph.id}>{graph.id}</li>
+                 </NavLink>
+              </CardContent>
+            </Card>
           );
         })}
-    </ul>
+    </div>
   );
 }

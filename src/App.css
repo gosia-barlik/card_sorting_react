@@ -1,38 +1,76 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@800;900&display=swap");
+
+:root {
+  --white2: rgb(250, 250, 253);
+  /* --greylight: rgb(245, 245, 242); */
+  /* --greylight: rgb(246, 248, 253); */
+  --greydark: rgb(43, 42, 42);
+  --greydark2: rgb(32, 67, 84);
+  --greydark3: rgb(47, 97, 143);
+  --indigo: rgb(8, 0, 255);
+  --indigo2: rgb(84, 78, 255);
+  --cyan: rgb(0, 221, 210);
+}
+
+body {
+  background-color: var(--greylight);
+}
+
+body *{
+  font-family: 'Montserrat', sans-serif !important;
+}
+
 .App {
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+/* HEADER */
+
+.app-bar {
+  background-color: var(--white2) !important;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05) !important;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.app-logo {
+  background: -webkit-linear-gradient(to right, #544eff 0%, #25c9cf 80%);
+  background: -moz-linear-gradient(to right, #544eff 0%, #25c9cf 80%);
+  background: linear-gradient(to right, #544eff 0%, #25c9cf 80%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent; 
 }
 
 .App-header {
-  background-color: #282c34;
+  width:80%;
+  background-color: var(--greylight);
+  font-family: "Montserrat";
   min-height: 100vh;
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  align-items: left;
 }
 
-.App-link {
-  color: #61dafb;
+#modalTitle {
+  font-size: 16px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+#EditNodeModal{
+  width: 560px;
 }
+
+.close-reveal-modal {
+
+}
+.button {
+  font-size: 12px;
+}
+/* ul {
+padding-left:150px;
+padding-top: 50px;
+  align-items:flex-start
+}
+li {
+  color:rgb(42, 41, 41);
+  list-style: none;
+  font-size: 12px !important;
+ 
+} */

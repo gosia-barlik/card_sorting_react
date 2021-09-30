@@ -1,14 +1,18 @@
 import "./App.css";
 import React, { useState, useEffect } from "react";
+import Header from "./components/common/Header.jsx";
 import GraphList from "./components/GraphList";
 import GraphDetails from "./components/GraphDetails";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import EditNodeModal from "./components/common/EditNodeModal";
+import CreateNodeModal from "./components/common/CreateNodeModal";
 
 function App() {
   return (
     <div className='App'>
-      <header className='App-header'>
-        <Router>
+      <Router>
+        <Header />
+        <header className='App-header'>
           <Switch>
             <Route exact path='/Graph/:graphId'>
               <GraphDetails />
@@ -17,8 +21,10 @@ function App() {
               <GraphList />
             </Route>
           </Switch>
-        </Router>
-      </header>
+        </header>
+      </Router>
+      {/* <EditNodeModal /> */}
+      {/* <CreateNodeModal /> */}
     </div>
   );
 }

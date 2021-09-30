@@ -98,6 +98,11 @@ export default function GraphDetails() {
     window.draw_tree(null, data.data())
   };
 
-  return <div id="tree-container"/>
-        
+  return (
+  <>
+  
+  <div id="tree-container"/>
+  
+  </>)
+      
 }

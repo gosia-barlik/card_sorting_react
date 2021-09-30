@@ -3,6 +3,10 @@ import React, { useState, useEffect } from "react";
 
 export default function EditNodeModal() {
 
+  const wrapEditNode = () => {
+    window.edit_node()
+  }
+
   return (
       
     <div id="EditNodeModal" className="reveal-modal" data-reveal aria-labelledby="modalTitle" aria-hidden="true" role="dialog">
@@ -34,8 +38,8 @@ export default function EditNodeModal() {
           &nbsp;
         </div>
         <div className="large-4 columns">
-          <a href="#" className="button info" onClick={()=>{window.close_edit_node_modal()}}>Cancel</a>
-          <a href="#" className="button success" onClick={()=>window.edit_node()}>Save</a>
+          <a href="#" className="button info" onClick={()=>window.close_edit_node_modal()}>Cancel</a>
+          <a href="#" className="button success" onClick={wrapEditNode}>Save</a>
         </div>
       </div>
        </form>

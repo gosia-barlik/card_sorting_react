@@ -23,7 +23,7 @@ function App() {
           </Switch>
         </header>
       </Router>
-      {/* <EditNodeModal /> */}
+      <EditNodeModal />
       {/* <CreateNodeModal /> */}
     </div>
   );

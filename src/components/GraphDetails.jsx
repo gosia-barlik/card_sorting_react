@@ -102,6 +102,7 @@ export default function GraphDetails() {
   <>
   
   <div id="tree-container"/>
+  <button id="submit">zapisz</button>
   
   </>)
       

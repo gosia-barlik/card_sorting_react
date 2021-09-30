@@ -747,21 +747,11 @@ function draw_tree(error, treeData) {
   tree_root = root;
 }
 
-document
-  .getElementById("submit")
-  .addEventListener("click", () => updateChartInDb(tree_root));
+// document
+//   .getElementById("submit")
+//   .addEventListener("click", () => updateChartInDb(tree_root));
 
-function updateChartInDb(obj) {
-  console.log("original");
-  console.log(obj);
-  if (obj) {
-    var objcopy = convertRoot(obj);
-    console.log("copy");
-    console.log(objcopy);
 
-    db.collection("professions").doc(obj.id).update(objcopy);
-  }
-}
 
 // Breadth-first traversal of the tree
 // func function is processed on every node of a same level
@@ -901,53 +891,3 @@ function initGradient() {
     .attr("stop-opacity", 1);
 }
 
-//Convert root to database data
-function convertRoot(root1) {
-  if (root1) {
-    const converted = (({ name, type, children }) => ({
-      name,
-      type,
-      children,
-    }))(root1);
-
-    removeKeys(converted, ["parent", "x", "x0", "y", "y0", "depth", "id"]);
-
-    return converted;
-  }
-}
-
-function removeKeys(obj, keys) {
-  var index;
-  for (var prop in obj) {
-    // important check that this is objects own property
-    // not from prototype prop inherited
-    if (obj.hasOwnProperty(prop)) {
-      switch (typeof obj[prop]) {
-        case "string":
-          index = keys.indexOf(prop);
-          if (index > -1) {
-            delete obj[prop];
-          }
-          break;
-        case "object":
-          if (parseInt(prop) > -1) {
-            for (var prop2 in obj[prop]) {
-              index = keys.indexOf(prop2);
-              if (index > -1) {
-                delete obj[prop][prop2];
-              } else {
-                removeKeys(obj[prop][prop2], keys);
-              }
-            }
-          }
-          index = keys.indexOf(prop);
-          if (index > -1) {
-            delete obj[prop];
-          } else {
-            removeKeys(obj[prop], keys);
-          }
-          break;
-      }
-    }
-  }
-}

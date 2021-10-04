@@ -6,6 +6,7 @@ import GraphDetails from "./components/GraphDetails";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import EditNodeModal from "./components/common/EditNodeModal";
 import CreateNodeModal from "./components/common/CreateNodeModal";
+import ControlledRadioButtonsGroup from "./components/common/RadioButtons"
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
         </header>
       </Router>
       <EditNodeModal />
+      {/* <ControlledRadioButtonsGroup /> */}
       {/* <CreateNodeModal /> */}
     </div>
   );

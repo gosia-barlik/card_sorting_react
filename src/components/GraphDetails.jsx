@@ -82,9 +82,9 @@ function removeKeys(obj, keys) {
 
   return (
   <>
-  
-  <div id="tree-container"/>
   <button id="submit" onClick={updateChartInDb}>zapisz</button>
+  <div id="tree-container"/>
+  
   
   </>)
       

@@ -60,10 +60,10 @@ function edit_node() {
     node_to_edit.name = name;
     node_to_edit.type = type;
     edit_node_modal_active = false;
-    $("#RenameNodeName").val("")
+    $("#RenameNodeName").val("");
   }
   close_modal();
-  outer_update(node_to_edit);
+ outer_update(node_to_edit);
 }
 
 outer_update = null;

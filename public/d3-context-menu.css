@@ -4,8 +4,8 @@
 	background-color: #f2f2f2;
 	border-radius: 4px;
 
-	font-family: Arial, sans-serif;
-	font-size: 14px;
+	font-family: 'Montserrat', sans-serif !important;
+	font-size: 12px !important;
 	min-width: 150px;
 	border: 1px solid #d4d4d4;
 
@@ -21,6 +21,7 @@
 
 .d3-context-menu ul li {
 	padding: 4px 16px;
+	font-size: 12px !important;
 }
 
 .d3-context-menu ul li:hover {

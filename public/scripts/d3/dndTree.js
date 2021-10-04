@@ -61,9 +61,10 @@ function edit_node() {
     node_to_edit.type = type;
     edit_node_modal_active = false;
     $("#RenameNodeName").val("");
+    $("input[name=color]").attr("checked", false);
   }
   close_modal();
- outer_update(node_to_edit);
+  outer_update(node_to_edit);
 }
 
 outer_update = null;
@@ -102,6 +103,8 @@ function draw_tree(error, treeData) {
       action: function (elm, d, i) {
         console.log("Edit node");
         $("#RenameNodeName").val(d.name);
+        var radios = document.querySelector('#EditNodeModal').querySelectorAll('input[name="color"]');
+        for (var i = 0; i < radios.length; i++) {if (radios[i].value == d.type) {radios[i].checked = true}}
         edit_node_modal_active = true;
         node_to_edit = d;
         $("#EditNodeName").focus();
@@ -751,8 +754,6 @@ function draw_tree(error, treeData) {
 //   .getElementById("submit")
 //   .addEventListener("click", () => updateChartInDb(tree_root));
 
-
-
 // Breadth-first traversal of the tree
 // func function is processed on every node of a same level
 // return the max level
@@ -890,4 +891,3 @@ function initGradient() {
     .attr("stop-color", "blue")
     .attr("stop-opacity", 1);
 }
-

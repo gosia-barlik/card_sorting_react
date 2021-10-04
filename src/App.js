@@ -26,7 +26,7 @@ function App() {
       </Router>
       <EditNodeModal />
       {/* <ControlledRadioButtonsGroup /> */}
-      {/* <CreateNodeModal /> */}
+      <CreateNodeModal />
     </div>
   );
 }

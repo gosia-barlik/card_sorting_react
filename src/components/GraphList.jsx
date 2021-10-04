@@ -22,7 +22,7 @@ export default function GraphList() {
 
     const graphsResponse = [];
     data.docs.forEach((item) => {
-      graphsResponse.push({ id: item.id, data: item.data() });
+      graphsResponse.push({ id: item.id, name: item.data().name, data: item.data() });
     });
 
     setGraphs(...graphs, graphsResponse);
@@ -36,7 +36,7 @@ export default function GraphList() {
             <Card sx={{ minWidth: 275 }} style={{margin: '20px'}}>
                <CardContent>
                  <NavLink to={`/Graph/${graph.id}`} style={{fontSize: '12px', color:'rgb(42, 41, 41)'}}>
-                  <li key={graph.id}>{graph.id}</li>
+                  <li key={graph.id}>{graph.name}</li>
                  </NavLink>
               </CardContent>
             </Card>

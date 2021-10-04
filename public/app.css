@@ -93,7 +93,7 @@ button#submit:hover {
   padding: 6px 12px 8px 12px;
   transition: background-color 300ms ease-out;
   color: rgb(89, 131, 252);
-  border: 2px solid rgb(89, 131, 252);
+  border: 2px solid #544eff ;
   box-shadow: 3px 4px 24px -11px rgb(211, 213, 236);
   font-size: 12px;
   line-height: 1;

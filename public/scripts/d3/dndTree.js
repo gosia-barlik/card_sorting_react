@@ -303,7 +303,7 @@ function draw_tree(error, treeData) {
     .append("rect")
     .attr("width", "100%")
     .attr("height", "100%")
-    .attr("fill", "white");
+    .attr("fill", "#f5f5f2");
 
   baseSvg.call(zoomListener);
 

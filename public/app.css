@@ -54,7 +54,8 @@ button,
     0px 2px 2px 0px rgb(0 0 0 / 14%), 0px 1px 5px 0px rgb(0 0 0 / 12);
 }
 
-button#submit {
+button#submit,
+button#send {
   background-color: #544eff !important;
   transition: background-color 300ms ease-out;
   padding: 6px 24px 8px 24px;
@@ -63,11 +64,16 @@ button#submit {
   font-size: 12px !important;
 }
 
-button#submit:hover {
+button#submit:hover,
+button#send:hover
+ {
   background-color: #4943e0!important;
   -webkit-box-shadow: 3px 4px 24px -11px rgba(66, 68, 90, 1);
   -moz-box-shadow: 3px 4px 24px -11px rgba(66, 68, 90, 1);
   box-shadow: 3px 4px 24px -11px rgba(66, 68, 90, 1);
+}
+input.hidden {
+  display:none
 }
 
 

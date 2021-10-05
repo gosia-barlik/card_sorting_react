@@ -1,8 +1,6 @@
 import db from "../config/firebase.config";
 import React, { useState, useEffect } from "react";
 import { NavLink } from "react-router-dom";
-
-import Box from "@mui/material/Box";
 import Card from "@mui/material/Card";
 import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
@@ -42,39 +40,29 @@ export default function GraphList() {
     //   files = e.target.files;
     // });
     document.getElementById("send").addEventListener("click", function () {
-
       var file = document.getElementById("files").files[0];
       if (file) {
-          var reader = new FileReader();
-          reader.readAsText(file, "UTF-8");
-          reader.onload = function (evt) {
-            console.log(JSON.parse(evt.target.result));
-            db.collection("professions").add(JSON.parse(evt.target.result));
-          }
-          reader.onerror = function (evt) {
-              console.log("error reading file");
-          }
+        var reader = new FileReader();
+        reader.readAsText(file, "UTF-8");
+        reader.onload = function (evt) {
+          console.log(JSON.parse(evt.target.result));
+          db.collection("professions").add(JSON.parse(evt.target.result));
+        };
+        reader.onerror = function (evt) {
+          console.log("error reading file");
+        };
       }
     });
   };
 
   return (
-    <div style={{ marginLeft: "120px" }}>
-      <div>
-        Upload Files
-        <br />
-        <input type='file' id='files' multiple />
-        <br />
-        <br />
-        <button id='send'>Upload</button>
-        <p id='uploading'></p>
-        <progress value='0' max='100' id='progress'></progress>
-      </div>
-
+    <div style={{ marginLeft: "20%", display: "flex" }}>
       {graphs &&
         graphs.map((graph) => {
           return (
-            <Card sx={{ minWidth: 275 }} style={{ margin: "20px" }}>
+            <Card
+              sx={{ minWidth: 275 }}
+              style={{ margin: "20px", height: "150px" }}>
               <CardContent>
                 <NavLink
                   to={`/Graph/${graph.id}`}
@@ -85,6 +73,19 @@ export default function GraphList() {
             </Card>
           );
         })}
+
+      <Card sx={{ minWidth: 275 }} style={{ margin: "20px", height: "150px" }}>
+        <CardContent style={{ paddingBottom: "20px"}}>
+          Upload Files
+          <br />
+          <input type='file' id='files' class='hidden' />
+          <label for='files'>Select file</label>
+          <br />
+          <button id='send'>
+            Upload
+          </button>
+        </CardContent >
+      </Card>
     </div>
   );
 }

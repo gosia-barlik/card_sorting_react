@@ -496,7 +496,7 @@ function draw_tree(error, treeData) {
     scale = zoomListener.scale();
     x = -source.y0;
     y = -source.x0;
-    x = x * scale + viewerWidth / 2;
+    x = x * scale + viewerWidth / 4;
     y = y * scale + viewerHeight / 2;
     d3.select("g")
       .transition()

@@ -80,7 +80,7 @@ export default function GraphDetails() {
   }
 
   return (
-    <>
+    <div>
       <NavLink to='/'>
         <button className="button info">wróć</button>
       </NavLink>
@@ -88,6 +88,6 @@ export default function GraphDetails() {
         zapisz
       </button>
       <div id='tree-container' />
-    </>
+    </div>
   );
 }

@@ -9,7 +9,7 @@ export default function Header() {
     <AppBar className='app-bar' position='static'>
       <Container maxWidth='xl' style={{ width: "80vw", textAlign: "left", height: "50px"}}>
         <NavLink to='/' className='app-logo'>
-          <Typography className='app-logo' variant='h6' component='div' sx={{ flexGrow: 1, lineHeight: "3rem" }}>
+          <Typography className='app-logo' variant='h6' component='div' sx={{ flexGrow: 1, lineHeight: "3rem" }} style={{marginTop:'15px'}}>
             Cardsorting
           </Typography>
         </NavLink>

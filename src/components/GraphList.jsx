@@ -4,6 +4,7 @@ import { NavLink } from "react-router-dom";
 import Card from "@mui/material/Card";
 import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
+import CardMedia from '@mui/material/CardMedia';
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 
@@ -56,6 +57,10 @@ export default function GraphList() {
   };
 
   return (
+    <div style={{display:'flex', flexDirection:'column', marginLeft: "10%" }}>
+    <div style={{marginLeft: "20%"}}>
+    <Typography style={{textAlign:'left', padding: '20px', fontWeight: '600'}}>Collections:</Typography>
+    </div>
     <div style={{ marginLeft: "20%", display: "flex" }}>
       {graphs &&
         graphs.map((graph) => {
@@ -67,7 +72,7 @@ export default function GraphList() {
                 <NavLink
                   to={`/Graph/${graph.id}`}
                   style={{ fontSize: "12px", color: "rgb(42, 41, 41)" }}>
-                  <li key={graph.id}>{graph.name}</li>
+                  <li style={{listStyle:'none'}} key={graph.id}>name: <strong> {graph.name} </strong></li>
                 </NavLink>
               </CardContent>
             </Card>
@@ -86,6 +91,8 @@ export default function GraphList() {
           </button>
         </CardContent >
       </Card>
+   
+    </div>
     </div>
   );
 }

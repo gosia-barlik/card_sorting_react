@@ -93,6 +93,24 @@ input.hidden {
   box-shadow: 3px 4px 24px -11px rgba(66, 68, 90, 1);
 }
 
+button#delete{
+  box-sizing: border-box !important;
+  background-color: rgb(248, 248, 248) !important;
+  padding: 6px 12px 8px 12px;
+  transition: background-color 300ms ease-out;
+  color: rgb(89, 131, 252);
+  border: none;
+  box-shadow: 3px 4px 24px -11px rgb(211, 213, 236);
+  font-size: 12px;
+  line-height: 1;
+  position: relative;
+  top: 0;
+  right: 0;
+  color: #aaaaaa;
+  font-weight: normal;
+  cursor: pointer;
+}
+
 .button.info {
   box-sizing: border-box !important;
   background-color: rgb(248, 248, 248) !important;

@@ -2,22 +2,17 @@ import db from "../config/firebase.config";
 import React, { useState, useEffect } from "react";
 import { NavLink } from "react-router-dom";
 import Card from "@mui/material/Card";
-import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
-import CardMedia from "@mui/material/CardMedia";
-import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 
+
 export default function GraphList() {
   const [graphs, setGraphs] = useState([]);
+  const [count, setCount] = useState(0);
 
   useEffect(() => {
     fetchGraphs();
-  }, []);
-
-  useEffect(() => {
-    uploadFiles();
   }, []);
 
   const fetchGraphs = async () => {
@@ -32,34 +27,29 @@ export default function GraphList() {
         data: item.data(),
       });
     });
-
     setGraphs(...graphs, graphsResponse);
   };
 
   const uploadFiles = () => {
-    // var files = [];
-    // document.getElementById("files").addEventListener("change", function (e) {
-    //   files = e.target.files;
-    // });
-    document.getElementById("send").addEventListener("click", function () {
       var file = document.getElementById("files").files[0];
+      
       if (file) {
         var reader = new FileReader();
         reader.readAsText(file, "UTF-8");
         reader.onload = function (evt) {
-          console.log(JSON.parse(evt.target.result));
           db.collection("professions").add(JSON.parse(evt.target.result));
         };
         reader.onerror = function (evt) {
           console.log("error reading file");
         };
+        // var span = document.getElementById('file-selected')
+        // span.innerHTML = file.name
       }
-    });
+      setCount(count + 1);
   };
 
   const deleteFile = (id) => {
-    console.log(id);
-    db.collection("professions").doc(id).delete()
+    db.collection("professions").doc(id).delete();
   };
 
   return (
@@ -82,7 +72,8 @@ export default function GraphList() {
             return (
               <Card
                 sx={{ minWidth: 275 }}
-                style={{ margin: "20px", height: "150px" }}>
+                style={{ margin: "20px", height: "150px" }}
+                key={graph.id}>
                 <CardContent>
                   <NavLink
                     to={`/Graph/${graph.id}`}
@@ -126,10 +117,12 @@ export default function GraphList() {
           <CardContent style={{}}>
             <strong>Upload Files</strong>
             <br />
-            <input type='file' id='files' class='hidden' />
-            <label for='files'>Select file</label>
+            <input type='file' id='files' className='hidden' />
+            <span id="file-selected"></span>
+            <label htmlFor='files'>Select file</label>
             <br />
-            <button id='send'>Upload</button>
+            <button id='send'
+            onClick={()=> uploadFiles()}>Upload</button>
           </CardContent>
         </Card>
       </div>

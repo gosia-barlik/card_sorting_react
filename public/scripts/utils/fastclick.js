@@ -377,4 +377,4 @@
       ? ((module.exports = a.attach), (module.exports.FastClick = a))
       : (window.FastClick = a);
 })();
-foundation.alert.js;
+// foundation.alert.js;

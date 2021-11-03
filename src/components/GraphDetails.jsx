@@ -74,6 +74,8 @@ export default function GraphDetails() {
               removeKeys(obj[prop], keys);
             }
             break;
+            default:
+    console.log(`Sorry, no keys left`);
         }
       }
     }

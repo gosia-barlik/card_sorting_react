@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 
 export default function CreateNodeModal() {
   useEffect(() => addClick(), []);
@@ -39,7 +39,7 @@ export default function CreateNodeModal() {
               }}>Node color</p>
             <input type='radio' id='color1' name='color' value='1'></input>
             <label
-              for='color1'
+              htmlFor='color1'
               style={{
                 backgroundColor: "rgb(200, 200, 200)",
                 padding: "4px 12px 4px 12px",
@@ -49,7 +49,7 @@ export default function CreateNodeModal() {
             </label>
             <input type='radio' id='color2' name='color' value='2'></input>
             <label
-              for='color2'
+              htmlFor='color2'
               style={{
                 backgroundColor: "rgb(227, 253, 78)",
                 padding: "4px 12px 4px 12px",
@@ -59,7 +59,7 @@ export default function CreateNodeModal() {
             </label>
             <input type='radio' id='color3' name='color' value='3'></input>
             <label
-              for='color3'
+              htmlFor='color3'
               style={{
                 backgroundColor: "rgb(7, 255, 172)",
                 padding: "4px 12px 4px 12px",
@@ -69,7 +69,7 @@ export default function CreateNodeModal() {
             </label>
             <input type='radio' id='color4' name='color' value='4'></input>
             <label
-              for='color4'
+              htmlFor='color4'
               style={{
                 backgroundColor: "rgb(89, 131, 252)",
                 padding: "4px 12px 4px 12px",
@@ -83,7 +83,7 @@ export default function CreateNodeModal() {
           <div className='large-8 columns'>&nbsp;</div>
           <div className='large-4 columns'>
             <a
-              href='#'
+              
               className='button info close-reveal-modal'
              >
               Cancel

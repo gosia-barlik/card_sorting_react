@@ -1,12 +1,11 @@
 import "./App.css";
-import React, { useState, useEffect } from "react";
+import React from "react";
 import Header from "./components/common/Header.jsx";
 import GraphList from "./components/GraphList";
 import GraphDetails from "./components/GraphDetails";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import EditNodeModal from "./components/common/EditNodeModal";
 import CreateNodeModal from "./components/common/CreateNodeModal";
-import ControlledRadioButtonsGroup from "./components/common/RadioButtons"
 
 function App() {
   return (
@@ -25,7 +24,6 @@ function App() {
         </header>
       </Router>
       <EditNodeModal />
-      {/* <ControlledRadioButtonsGroup /> */}
       <CreateNodeModal />
     </div>
   );

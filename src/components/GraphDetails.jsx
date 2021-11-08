@@ -15,7 +15,7 @@ export default function GraphDetails() {
   const fetchGraphs = async () => {
     const response = db.collection("professions").doc(graphId);
     const data = await response.get();
-    console.log(data.data());
+    // console.log(data.data());
     setGraphs(...graphData, data.data());
     window.draw_tree(null, data.data());
   };

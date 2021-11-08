@@ -82,9 +82,7 @@ export default function CreateNodeModal() {
         <div className='row'>
           <div className='large-8 columns'>&nbsp;</div>
           <div className='large-4 columns'>
-            <a
-              
-              className='button info close-reveal-modal'
+            <a href='#' className='button info close-reveal-modal'
              >
               Cancel
             </a>

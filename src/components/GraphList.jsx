@@ -5,7 +5,7 @@ import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
-
+import Button from "@mui/material/Button";
 
 export default function GraphList() {
   const [graphs, setGraphs] = useState([]);
@@ -30,26 +30,34 @@ export default function GraphList() {
     setGraphs(...graphs, graphsResponse);
   };
 
-  const uploadFiles = () => {
-      var file = document.getElementById("files").files[0];
-      
-      if (file) {
-        var reader = new FileReader();
-        reader.readAsText(file, "UTF-8");
-        reader.onload = function (evt) {
-          db.collection("professions").add(JSON.parse(evt.target.result));
-        };
-        reader.onerror = function (evt) {
-          console.log("error reading file");
-        };
-        // var span = document.getElementById('file-selected')
-        // span.innerHTML = file.name
-      }
-      setCount(count + 1);
+  const showSelectedFile = (e) => {
+    var span = document.getElementById("file-selected");
+    var label = document.getElementById("file-label");
+    span.innerHTML = document.getElementById("files").files[0].name;
+    label.innerHTML = "";
   };
 
-  const deleteFile = (id) => {
+  const uploadFiles = async () => {
+    var file = document.getElementById("files").files[0];
+
+    if (file) {
+      setCount(count + 1);
+      console.log(count);
+      var reader = new FileReader();
+      reader.readAsText(file, "UTF-8");
+      reader.onload = function (evt) {
+        db.collection("professions").add(JSON.parse(evt.target.result));
+      };
+      reader.onerror = function (evt) {
+        console.log("error reading file");
+      };
+    }
+    fetchGraphs();
+  };
+
+  const deleteFile = async (id) => {
     db.collection("professions").doc(id).delete();
+    fetchGraphs();
   };
 
   return (
@@ -101,7 +109,7 @@ export default function GraphList() {
                     <br></br>
                     <button
                       id='delete'
-                      onClick={()=> deleteFile(`${graph.id}`)}
+                      onClick={() => deleteFile(`${graph.id}`)}
                       style={{ fontSize: "12px", color: "rgb(42, 41, 41)" }}>
                       DELETE
                     </button>
@@ -117,12 +125,20 @@ export default function GraphList() {
           <CardContent style={{}}>
             <strong>Upload Files</strong>
             <br />
-            <input type='file' id='files' className='hidden' />
-            <span id="file-selected"></span>
-            <label htmlFor='files'>Select file</label>
+            <input
+              type='file'
+              id='files'
+              className='hidden'
+              onChange={(e) => showSelectedFile(e)}
+            />
+            <span id='file-selected'></span>
+            <label htmlFor='files' id='file-label'>
+              Select file
+            </label>
             <br />
-            <button id='send'
-            onClick={()=> uploadFiles()}>Upload</button>
+            <button id='send' onClick={() => uploadFiles()}>
+              Upload
+            </button>
           </CardContent>
         </Card>
       </div>

@@ -27,7 +27,10 @@ export default function GraphList() {
         data: item.data(),
       });
     });
-    setGraphs(...graphs, graphsResponse);
+    console.log(graphs);
+    console.log(graphsResponse);
+
+    setGraphs(graphsResponse);
   };
 
   const showSelectedFile = (e) => {
@@ -37,6 +40,13 @@ export default function GraphList() {
     label.innerHTML = "";
   };
 
+  const hideSelectedFile = (e) => {
+    var span = document.getElementById("file-selected");
+    var label = document.getElementById("file-label");
+    span.innerHTML = "";
+    label.innerHTML = "Select file";
+  }
+ 
   const uploadFiles = async () => {
     var file = document.getElementById("files").files[0];
 
@@ -53,11 +63,11 @@ export default function GraphList() {
       };
     }
     fetchGraphs();
+    hideSelectedFile();
   };
 
   const deleteFile = async (id) => {
-    db.collection("professions").doc(id).delete();
-    fetchGraphs();
+    db.collection("professions").doc(id).delete().then(()=>fetchGraphs());
   };
 
   return (
@@ -75,7 +85,7 @@ export default function GraphList() {
         </Typography>
       </div>
       <div style={{ marginLeft: "20%", display: "flex" }}>
-        {graphs &&
+        {graphs && graphs.length>0 &&
           graphs.map((graph) => {
             return (
               <Card

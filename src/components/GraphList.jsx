@@ -5,11 +5,17 @@ import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
+import Dialog from '@mui/material/Dialog';
+import DialogActions from '@mui/material/DialogActions';
+import DialogContent from '@mui/material/DialogContent';
+import DialogContentText from '@mui/material/DialogContentText';
+import DialogTitle from '@mui/material/DialogTitle';
 import Button from "@mui/material/Button";
 
 export default function GraphList() {
   const [graphs, setGraphs] = useState([]);
-  const [count, setCount] = useState(0);
+  const [labelVisible, setLabelVisible] = useState(true);
+  // const [count, setCount] = useState(0);
 
   useEffect(() => {
     fetchGraphs();
@@ -27,32 +33,27 @@ export default function GraphList() {
         data: item.data(),
       });
     });
-    console.log(graphs);
-    console.log(graphsResponse);
-
     setGraphs(graphsResponse);
   };
 
   const showSelectedFile = (e) => {
     var span = document.getElementById("file-selected");
-    var label = document.getElementById("file-label");
     span.innerHTML = document.getElementById("files").files[0].name;
-    label.innerHTML = "";
+    setLabelVisible(false);
   };
 
   const hideSelectedFile = (e) => {
     var span = document.getElementById("file-selected");
-    var label = document.getElementById("file-label");
     span.innerHTML = "";
-    label.innerHTML = "Select file";
+    setLabelVisible(true);
   }
  
   const uploadFiles = async () => {
     var file = document.getElementById("files").files[0];
 
     if (file) {
-      setCount(count + 1);
-      console.log(count);
+      // setCount(count + 1);
+      // console.log(count);
       var reader = new FileReader();
       reader.readAsText(file, "UTF-8");
       reader.onload = function (evt) {
@@ -132,7 +133,7 @@ export default function GraphList() {
         <Card
           sx={{ minWidth: 275 }}
           style={{ margin: "20px", height: "150px", fontSize: "12px" }}>
-          <CardContent style={{}}>
+          <CardContent style={{display:"flex", flexDirection:"column"}}>
             <strong>Upload Files</strong>
             <br />
             <input
@@ -142,11 +143,10 @@ export default function GraphList() {
               onChange={(e) => showSelectedFile(e)}
             />
             <span id='file-selected'></span>
-            <label htmlFor='files' id='file-label'>
+            <label htmlFor='files' id='file-label' className = {`${labelVisible ? "" : "hidden"}`}>
               Select file
             </label>
-            <br />
-            <button id='send' onClick={() => uploadFiles()}>
+            <button id='send' className = {`${labelVisible ? "hidden" : ""}`} onClick={() => uploadFiles()}>
               Upload
             </button>
           </CardContent>

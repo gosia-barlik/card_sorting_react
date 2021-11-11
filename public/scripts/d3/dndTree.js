@@ -64,10 +64,10 @@ function edit_node() {
     $("input[name=color]").attr("checked", false);
   }
   close_modal();
-  outer_update(node_to_edit);
+  outer_update(root);
 }
 
-outer_update = null;
+// outer_update = null;
 
 function draw_tree(error, treeData) {
   // console.log(treeData);
@@ -567,6 +567,11 @@ function draw_tree(error, treeData) {
     //   // Normalize for fixed-depth by commenting out below line
     //   d.y = d.depth * 300; //500px per level.
     // });
+
+    // Update the nodes…
+    node = svgGroup.selectAll("g.node").data(nodes, function (d) {
+      return d.id || (d.id = ++i);
+    });
 
     // Update the nodes…
     node = svgGroup.selectAll("g.node").data(nodes, function (d) {

@@ -4,7 +4,8 @@ export default function EditNodeModal() {
 useEffect(() => addClick(), []);
 
 function addClick () {
-  document.getElementById("saveEditNode").addEventListener("click", function() {
+  document.getElementById("saveEditNode")
+  .addEventListener("click", function() {
    window.edit_node();
   });
 }

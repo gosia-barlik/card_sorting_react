@@ -45,7 +45,8 @@
   display: none;
 }
 
-button,
+button#submit,
+button#send,
 .button,
 #file-label {
   border-radius: 8px;

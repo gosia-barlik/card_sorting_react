@@ -64,7 +64,7 @@ function edit_node() {
     $("input[name=color]").attr("checked", false);
   }
   close_modal();
-  outer_update(root);
+  outer_update(node_to_edit);
 }
 
 // outer_update = null;
@@ -103,8 +103,14 @@ function draw_tree(error, treeData) {
       action: function (elm, d, i) {
         console.log("Edit node");
         $("#RenameNodeName").val(d.name);
-        var radios = document.querySelector('#EditNodeModal').querySelectorAll('input[name="color"]');
-        for (var i = 0; i < radios.length; i++) {if (radios[i].value == d.type) {radios[i].checked = true}}
+        var radios = document
+          .querySelector("#EditNodeModal")
+          .querySelectorAll('input[name="color"]');
+        for (var i = 0; i < radios.length; i++) {
+          if (radios[i].value == d.type) {
+            radios[i].checked = true;
+          }
+        }
         edit_node_modal_active = true;
         node_to_edit = d;
         $("#EditNodeName").focus();
@@ -578,12 +584,20 @@ function draw_tree(error, treeData) {
       return d.id || (d.id = ++i);
     });
 
+    $("#node-" + source.id + " > g > rect").css("fill", colorNode(source));
+    $("#node-" + source.id + " > foreignObject > xhtml > div").html(
+      source.name
+    );
+
     // Enter any new nodes at the parent's previous position.
     var nodeEnter = node
       .enter()
       .append("g")
       .call(dragListener)
       .attr("class", "node")
+      .attr("id", function (d) {
+        return "node-" + d.id;
+      })
       .attr("transform", function (d) {
         return "translate(" + source.y0 + "," + source.x0 + ")";
       })

@@ -354,10 +354,10 @@ function draw_tree(error, treeData) {
         } catch (e) {}
       }
 
-      d.x0 += d3.event.dy;
-      d.y0 += d3.event.dx;
+      d.x0 += d3.event.dx;
+      d.y0 += d3.event.dy;
       var node = d3.select(this);
-      node.attr("transform", "translate(" + d.y0 + "," + d.x0 + ")");
+      node.attr("transform", "translate(" + d.x0 + "," + d.y0 + ")");
       updateTempConnector();
     })
     .on("dragend", function (d) {
@@ -472,12 +472,12 @@ function draw_tree(error, treeData) {
       data = [
         {
           source: {
-            x: selectedNode.y0,
-            y: selectedNode.x0,
+            x: selectedNode.x0,
+            y: selectedNode.y0,
           },
           target: {
-            x: draggingNode.y0,
-            y: draggingNode.x0,
+            x: draggingNode.x0,
+            y: draggingNode.y0,
           },
         },
       ];
@@ -500,8 +500,8 @@ function draw_tree(error, treeData) {
 
   function centerNode(source) {
     scale = zoomListener.scale();
-    x = -source.y0;
-    y = -source.x0;
+    y = -source.y0;
+    x = -source.x0;
     x = x * scale + viewerWidth / 4;
     y = y * scale + viewerHeight / 2;
     d3.select("g")
@@ -551,7 +551,7 @@ function draw_tree(error, treeData) {
       }
     };
     childCount(0, root);
-    var newHeight = d3.max(levelWidth) * 25; // 25 pixels per line
+    var newHeight = d3.max(levelWidth) * 250; // 25 pixels per line
     tree = tree.size([newHeight, viewerWidth]);
 
     // Compute the new tree layout.
@@ -599,11 +599,11 @@ function draw_tree(error, treeData) {
         return "node-" + d.id;
       })
       .attr("transform", function (d) {
-        return "translate(" + source.y0 + "," + source.x0 + ")";
+        return "translate(" + source.x0 + "," + source.y0 + ")";
       })
       .on("click", click);
 
-    var rectNode = { width: 120, height: 45, textMargin: 5 };
+    var rectNode = { width: 120, height: 60, textMargin: 5 };
 
     nodeEnter
       .append("g")
@@ -682,7 +682,7 @@ function draw_tree(error, treeData) {
       .transition()
       .duration(duration)
       .attr("transform", function (d) {
-        return "translate(" + d.y + "," + d.x + ")";
+        return "translate(" + d.x + "," + d.y + ")";
       });
 
     // Fade the text in
@@ -694,7 +694,7 @@ function draw_tree(error, treeData) {
       .transition()
       .duration(duration)
       .attr("transform", function (d) {
-        return "translate(" + source.y + "," + source.x + ")";
+        return "translate(" + source.x + "," + source.y + ")";
       })
       .remove();
 
@@ -818,11 +818,11 @@ function collision(siblings) {
 
 function diagonal(d) {
   var p0 = {
-      x: d.source.x + rectNode.height / 2,
-      y: d.source.y + rectNode.width,
+      x: d.source.x + rectNode.width / 2,
+      y: d.source.y + rectNode.height*1.3,
     },
     p3 = {
-      x: d.target.x + rectNode.height / 2,
+      x: d.target.x + rectNode.width / 2,
       y: d.target.y,
     },
     m = (p0.y + p3.y) / 2,
@@ -839,7 +839,7 @@ function diagonal(d) {
       p3,
     ];
   p = p.map(function (d) {
-    return [d.y, d.x];
+    return [d.x, d.y];
   });
 
   return "M" + p[0] + "C" + p[1] + " " + p[2] + " " + p[3];

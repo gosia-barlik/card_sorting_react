@@ -84,7 +84,7 @@ export default function GraphDetails() {
   return (
     <div>
       <NavLink to='/'>
-        <button className="button info">anuluj</button>
+        <button className="button info">wróć</button>
       </NavLink>
       <button id='submit' onClick={updateChartInDb}>
         zapisz

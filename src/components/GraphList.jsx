@@ -15,7 +15,8 @@ import Button from "@mui/material/Button";
 export default function GraphList() {
   const [graphs, setGraphs] = useState([]);
   const [labelVisible, setLabelVisible] = useState(true);
-  const [open, setOpen] = React.useState(false);
+  const [openDialog, setOpenDialog] = React.useState(false);
+  const [graphId, setGraphId] = useState(0);
   // const [count, setCount] = useState(0);
 
   useEffect(() => {
@@ -73,15 +74,17 @@ export default function GraphList() {
       .doc(id)
       .delete()
       .then(() => fetchGraphs());
-      handleClose();  
+      handleCloseDialog();  
+      console.log("deleted file", id)
   };
 
-  const handleClickOpen = () => {
-    setOpen(true);
+  const handleOpenDialog = (id) => {
+    setOpenDialog(true);
+    setGraphId(id)
   };
 
-  const handleClose = () => {
-    setOpen(false);
+  const handleCloseDialog = () => {
+    setOpenDialog(false);
   };
 
   return (
@@ -133,13 +136,13 @@ export default function GraphList() {
                     <br></br>
                     <button
                       id='delete'
-                      onClick={handleClickOpen}
+                      onClick={()=>handleOpenDialog(`${graph.id}`)}
                       style={{ fontSize: "12px", color: "rgb(42, 41, 41)" }}>
                       DELETE
                     </button>
                     <Dialog
-                      open={open}
-                      onClose={handleClose}
+                      open={openDialog}
+                      onClose={handleCloseDialog}
                       aria-labelledby='alert-dialog-title'
                       aria-describedby='alert-dialog-description'>
                       <DialogTitle id='alert-dialog-title'>
@@ -151,8 +154,8 @@ export default function GraphList() {
                         </DialogContentText>
                       </DialogContent>
                       <DialogActions>
-                        <Button onClick={handleClose}>Cancel</Button>
-                        <Button  onClick={() => deleteFile(`${graph.id}`)} autoFocus>
+                        <Button onClick={handleCloseDialog}>Cancel</Button>
+                        <Button  onClick={() => deleteFile(graphId)} autoFocus>
                           Delete
                         </Button>
                       </DialogActions>
